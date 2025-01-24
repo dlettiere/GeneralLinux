@@ -1,4 +1,4 @@
-#DanAliases
+#DanAliases 24JAN2025
 alias ls='ls -al'
 alias la='ls -A'
 alias l='ls -CF'
