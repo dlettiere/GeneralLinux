@@ -1,4 +1,9 @@
 #DanAliases 08MAR2025v2
+if [ -f ~/.bash_aliases_local ]; then
+    . ~/.bash_aliases_local
+fi
+
+
 alias ls='ls -alh'
 alias la='ls -Ah'
 alias l='ls -CFh'
