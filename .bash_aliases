@@ -1,4 +1,4 @@
-#DanAliases 08MAR2025
+#DanAliases 08MAR2025v2
 alias ls='ls -alh'
 alias la='ls -Ah'
 alias l='ls -CFh'
