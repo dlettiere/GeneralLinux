@@ -1,10 +1,28 @@
-#08MAR2025
+#12MAR2025
 #! /bin/bash
 rm ~/.bash_aliases
 wget -P ~/ https://raw.githubusercontent.com/dlettiere/GeneralLinux/refs/heads/main/.bash_aliases
+touch ~/.bash_aliases_local
 sudo apt update
-sudo apt install -y tmux btop htop nmap tilde qdirstat rdiff-backup rsync git
-curl -fsSL https://tailscale.com/install.sh | sh
-curl -sSf https://downloads.nordcdn.com/apps/linux/install.sh | sh
-sudo usermod -aG nordvpn $USER
+sudo apt install -y tmux btop htop nmap tilde qdirstat rdiff-backup rsync git vnstat
+
+printf 'Install NordVPN (y/n)? '
+old_stty_cfg=$(stty -g)
+stty raw -echo ; answer=$(head -c 1) ; stty $old_stty_cfg # Careful playing with stty
+if [ "$answer" != "${answer#[Yy]}" ];then
+    curl -sSf https://downloads.nordcdn.com/apps/linux/install.sh | sh
+    sudo usermod -aG nordvpn $USER
+else
+    echo ok
+fi
+
+printf 'Install Tailscale (y/n)? '
+old_stty_cfg=$(stty -g)
+stty raw -echo ; answer=$(head -c 1) ; stty $old_stty_cfg # Careful playing with stty
+if [ "$answer" != "${answer#[Yy]}" ];then
+    curl -fsSL https://tailscale.com/install.sh | sh
+else
+    echo ok
+fi
+
 exit
