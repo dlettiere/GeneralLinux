@@ -1,4 +1,4 @@
-#DanAliases 08MAR2025v2
+#DanAliases 17MAR2025
 if [ -f ~/.bash_aliases_local ]; then
     . ~/.bash_aliases_local
 fi
