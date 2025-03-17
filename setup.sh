@@ -1,10 +1,18 @@
-#12MAR2025
+#17MAR2025
 #! /bin/bash
 rm ~/.bash_aliases
 wget -P ~/ https://raw.githubusercontent.com/dlettiere/GeneralLinux/refs/heads/main/.bash_aliases
 touch ~/.bash_aliases_local
-sudo apt update
-sudo apt install -y tmux btop htop nmap tilde qdirstat rdiff-backup rsync git vnstat
+
+printf 'Install base components (y/n)? '
+old_stty_cfg=$(stty -g)
+stty raw -echo ; answer=$(head -c 1) ; stty $old_stty_cfg # Careful playing with stty
+if [ "$answer" != "${answer#[Yy]}" ];then
+    sudo apt update
+    sudo apt install -y tmux btop htop nmap tilde qdirstat rdiff-backup rsync git vnstat tldr
+else
+    echo ok
+fi
 
 printf 'Install NordVPN (y/n)? '
 old_stty_cfg=$(stty -g)
