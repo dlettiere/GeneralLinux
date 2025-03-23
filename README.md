@@ -1,3 +1,3 @@
 Execute with 
 
-curl -sSf https://raw.githubusercontent.com/dlettiere/GeneralLinux/refs/heads/main/setup.sh | sh 
+wget -O https://raw.githubusercontent.com/dlettiere/GeneralLinux/refs/heads/main/setup.sh | bash
