@@ -3,7 +3,6 @@ if [ -f ~/.bash_aliases_local ]; then
     . ~/.bash_aliases_local
 fi
 
-
 alias ls='ls -alh'
 alias la='ls -Ah'
 alias l='ls -CFh'
@@ -20,15 +19,6 @@ alias uppy='apt update && apt upgrade -y && apt autoremove -y && apt autoclean -
 alias dockup='docker compose up -d'
 alias dockdown='docker compose down'
 
-function stats() {
-OUT=$(find . -type f -name '*.*' -exec du -ch {} +)
-N=$(echo "$OUT" | head -n -1 | wc -l)
-SIZE=$(echo "$OUT" | tail -n 1)
-echo "Number of files: $N"
-echo $SIZE
-}
-export -f stats
-
 alias rcopy='rsync -a --info=progress2 --no-i-r'
 alias rcopydry='rsync -a -n --info=progress2 --no--r-r'
 alias rmove='sudo rsync -a --info=progress2 --no-i-r --remove-source-files'
@@ -41,7 +31,7 @@ alias rf='rm -rf'
 alias nfowipe='find . -name "*.nfo" -type f -delete'
 alias txtwipe='find . -name "*.txt" -type f -delete'
 
-killZombie() {
+function killZombie() {
     pid=$(ps -A -ostat,ppid | awk '/[zZ]/ && !a[$2]++ {print $2}');
     if [ "$pid" = "" ]; then
         echo "No zombie processes found.";
@@ -55,6 +45,19 @@ killZombie() {
     fi
 }
 
-mktar(){
+function mktar(){
 tar -czvf "$1".tar.gz "$1"
 }
+
+function cheat(){
+curl cheat.sh/"$1"
+}
+
+function stats() {
+OUT=$(find . -type f -name '*.*' -exec du -ch {} +)
+N=$(echo "$OUT" | head -n -1 | wc -l)
+SIZE=$(echo "$OUT" | tail -n 1)
+echo "Number of files: $N"
+echo $SIZE
+}
+export -f stats
