@@ -9,7 +9,7 @@ old_stty_cfg=$(stty -g)
 stty raw -echo ; answer=$(head -c 1) ; stty $old_stty_cfg # Careful playing with stty
 if [ "$answer" != "${answer#[Yy]}" ];then
     sudo apt update
-    sudo apt install -y tmux btop htop nmap tilde qdirstat rdiff-backup rsync git vnstat tldr
+    sudo apt install -y tmux btop htop nmap tilde qdirstat rdiff-backup rsync git vnstat tldr curl
 else
     echo ok
 fi
