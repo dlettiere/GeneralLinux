@@ -1,18 +1,24 @@
-#17MAR2025
+#29SEPT2025
 #! /bin/bash
 rm ~/.bash_aliases
 wget -P ~/ https://raw.githubusercontent.com/dlettiere/GeneralLinux/refs/heads/main/.bash_aliases
 touch ~/.bash_aliases_local
 
 ###Base Packages to install
-basepack="tmux btop htop nmap tilde qdirstat rdiff-backup rsync git vnstat tldr curl"
+basepack='tmux btop htop nmap tilde qdirstat rdiff-backup rsync git vnstat tldr curl'
 
-printf 'Install base components (y/n)? ' $basepack
+echo This will install the following
+echo $basepack
+printf 'Install base components (y/n)? '
 
 old_stty_cfg=$(stty -g)
 stty raw -echo ; answer=$(head -c 1) ; stty $old_stty_cfg # Careful playing with stty
 if [ "$answer" != "${answer#[Yy]}" ];then
     sudo apt update
+    for i in $basepack; do
+          sudo apt-get install -y $i
+    done
+    
     #sudo apt install -y tmux btop htop nmap tilde qdirstat rdiff-backup rsync git vnstat tldr curl
 else
     echo ok
