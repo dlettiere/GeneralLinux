@@ -23,7 +23,9 @@ if [ "$answer" != "${answer#[Yy]}" ];then
 else
     echo ok
 fi
-
+echo 
+echo
+echo
 printf 'Install NordVPN (y/n)? '
 old_stty_cfg=$(stty -g)
 stty raw -echo ; answer=$(head -c 1) ; stty $old_stty_cfg # Careful playing with stty
@@ -33,7 +35,9 @@ if [ "$answer" != "${answer#[Yy]}" ];then
 else
     echo ok
 fi
-
+echo 
+echo 
+echo
 printf 'Install Tailscale (y/n)? '
 old_stty_cfg=$(stty -g)
 stty raw -echo ; answer=$(head -c 1) ; stty $old_stty_cfg # Careful playing with stty
