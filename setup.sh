@@ -8,7 +8,7 @@ touch ~/.bash_aliases_local
 basepack="tmux btop htop nmap tilde qdirstat rdiff-backup rsync git vnstat tldr curl"
 
 printf 'Install base components (y/n)? '
-printf '$basepack'
+printf $basepack
 old_stty_cfg=$(stty -g)
 stty raw -echo ; answer=$(head -c 1) ; stty $old_stty_cfg # Careful playing with stty
 if [ "$answer" != "${answer#[Yy]}" ];then
