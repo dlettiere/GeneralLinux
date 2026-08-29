@@ -19,7 +19,6 @@ BASE_PACKAGES=(
     rsync
     git
     vnstat
-    tldr
     curl
 )
 
