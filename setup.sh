@@ -108,7 +108,7 @@ install_base_packages() {
         sudo apt-get update -y
 
         info "Installing base packages..."
-        sudo apt-get install -y "${BASE_PACKAGES[@]}"
+        sudo DEBIAN_FRONTEND=noninteractive apt-get install -y "${BASE_PACKAGES[@]}"
         success "Base packages installed successfully."
     else
         info "Skipped base packages."
