@@ -20,6 +20,8 @@ BASE_PACKAGES=(
     git
     vnstat
     curl
+    net-tools
+    iperf3
 )
 
 # --- UI / Logging Helpers ---
