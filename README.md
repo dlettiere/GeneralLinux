@@ -18,3 +18,22 @@ bash <(wget -qO- https://raw.githubusercontent.com/dlettiere/GeneralLinux/refs/h
 ```bash
 bash <(curl -fsSL https://raw.githubusercontent.com/dlettiere/GeneralLinux/refs/heads/main/setup.sh) -y
 ```
+
+## Utilities
+
+### Mount Device by UUID (`mount_by_uuid.sh`)
+
+Safely mounts a block device to a mount point using `/etc/fstab` and its UUID:
+
+```bash
+sudo ./mount_by_uuid.sh <device> <mount_point> [mount_options]
+```
+
+**Example:**
+```bash
+sudo ./mount_by_uuid.sh /dev/sda1 /mnt/data "defaults,nofail"
+```
+
+- Auto-detects device UUID and filesystem type.
+- Creates a timestamped backup of `/etc/fstab` before modifying.
+- Automatically validates with `mount -a` and restores backup on failure.
