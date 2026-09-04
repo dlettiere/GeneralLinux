@@ -13,7 +13,6 @@ BASE_PACKAGES=(
     btop
     htop
     nmap
-    tilde
     qdirstat
     rdiff-backup
     rsync
