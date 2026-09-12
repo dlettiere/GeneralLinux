@@ -55,3 +55,17 @@ Or pass a commit message directly:
 - Checks if working tree is clean before prompting.
 - Sets upstream tracking branch automatically if not yet configured.
 
+### Resize Swap & Swappiness (`resize_swap.sh`)
+
+Safely resizes or creates a swapfile and configures `vm.swappiness`:
+
+```bash
+sudo ./resize_swap.sh
+```
+
+- **Safety pre-checks**: verifies available RAM against currently used swap to prevent Out-Of-Memory (OOM) kills during `swapoff`.
+- **Disk space validation**: verifies target filesystem space before allocating.
+- **Interactive prompts**: includes sensible defaults (`8G` swap, `20` swappiness).
+- **Safe allocation**: uses `fallocate` with automatic `dd` fallback, applies secure permissions (`chmod 600`), and formats with `mkswap`.
+- **Reboot persistence**: ensures persistence in `/etc/fstab` and `/etc/sysctl.d/99-swappiness.conf`.
+
